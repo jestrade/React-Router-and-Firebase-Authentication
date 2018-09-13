@@ -9,11 +9,20 @@ const config = {
 	messagingSenderId:process.env.REACT_APP_messagingSenderId
 }
 firebase.initializeApp(config)
+const authentication=firebase.auth()
+const database=firebase.database()
 
+
+export function signout(){
+	return authentication.signOut()
+}
+export function signin(user){
+	return authentication.signInWithEmailAndPassword(user.email,user.password)
+}
 export function signup(user){
-	return firebase.auth().createUserWithEmailAndPassword(user.email,user.password)
+	return authentication.createUserWithEmailAndPassword(user.email,user.password)
 }
 
-export function create(message){
-	return firebase.database().ref('/messages').push(message)
+export function create(collection,obj){
+	return database.ref(collection).push(obj)
 }

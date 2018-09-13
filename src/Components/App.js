@@ -33,7 +33,7 @@ class App extends Component {
 		
 		<BrowserRouter>
 		<div>
-			<Header isAuth={this.state.isAuth} />
+			<Header isAuth={this.state.isAuth} authenticate={this.state.authenticate}  />
 			{
 				!this.state.isAuth ?
 					<div>

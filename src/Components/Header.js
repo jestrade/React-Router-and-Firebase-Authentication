@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import {signout} from './../services/firebase'
 
 class Header extends Component {
+	constructor(){
+		super();
+		this.logout = this.logout.bind(this)
+	}
 	  	
 	logout(){
-		this.props.isAuth(false)		
+		signout()
+		.then(()=>{
+			//this.props.authenticate(false)		
+		})		
 	}
 	
   render() {
@@ -12,8 +20,8 @@ class Header extends Component {
 	  
     return (
 		<header>
-		<nav class="navbar navbar-dark navbar-fixed bg-dark">
-		 <Link class="navbar-brand" to="/">MyApp</Link>
+		<nav className="navbar navbar-dark navbar-fixed bg-dark">
+		 <Link className="navbar-brand" to="/">MyApp</Link>
 		 {
 			 this.props.isAuth &&
 			 <Link to="/" onClick={this.logout}>Logout</Link>
