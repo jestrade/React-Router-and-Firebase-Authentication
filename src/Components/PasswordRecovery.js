@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import {signin} from './../services/firebase'
+import {passwordRecovery} from './../services/firebase'
 
-class Signin extends Component {
+class PasswordRecovery extends Component {
 	constructor(){
 		super();
 		this.state = {
-			email:'',
-			password:'',
+			email:'default@default.com',
+			password:'default@default.com',
 			message:''
 		}
 
@@ -21,16 +21,17 @@ class Signin extends Component {
 		})
 
 		let user = {
-			email:this.state.email,
-			password:this.state.password
+			email:this.state.email
 		}
-		signin(user)
+		passwordRecovery(user)
 		.then(()=>{
-			this.props.authenticate(true)
+			this.setState({
+				message:'Message send'
+			})
 		})
 		.catch(error=>{
 			this.setState({
-				message:'Verify your credentials'
+				message:'Verify your email'
 			})
 		})
 
@@ -46,7 +47,7 @@ class Signin extends Component {
     return (
 		<section className="container">
 
-			<h2>Sign In</h2>
+			<h2>Password Recovery</h2>
 			<form onSubmit={this.handleSubmit}>
 			{
 				!!this.state.message &&
@@ -67,23 +68,9 @@ class Signin extends Component {
 					onChange={this.handleChange}
 				/>
 			  </div>
-			  <div className="form-group">
-				<label htmlFor="password">Password</label>
-				<input
-					type="password"
-					className="form-control"
-					id="password"
-					name="password"
-					required
-					placeholder="Password"
-					onChange={this.handleChange}
-				/>
-			  </div>
-			  <button type="submit" className="btn btn-primary">Login</button>
-			  <div className="center">
-				  <Link to="/signup">SignUp</Link>
-				   |
-				  <Link to="/passwordRecovery">Forgot password</Link>
+			  <button type="submit" className="btn btn-primary">Send</button>
+				<div  className="center">
+				  <Link to="/">Return to homepage</Link>
 			  </div>
 			</form>
 
@@ -92,4 +79,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default PasswordRecovery;

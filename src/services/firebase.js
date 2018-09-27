@@ -1,4 +1,6 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
 
 const config = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -22,6 +24,18 @@ export function signin(user){
 export function signup(user){
 	return authentication.createUserWithEmailAndPassword(user.email,user.password)
 }
+export function passwordRecovery(user){
+	return authentication.sendPasswordResetEmail(user.email)
+}
+export let isAuth = new Promise((resolve,reject)=>{
+	authentication.onAuthStateChanged(user=>{
+		if(user!=null)
+			resolve(user)
+		else
+			reject("User not authenticated")
+	})
+})
+
 
 export function create(collection,obj){
 	return database.ref(collection).push(obj)

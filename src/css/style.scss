@@ -1,7 +1,7 @@
 $font: sans-serif;
 @mixin reset($value){
 	margin: $value;
-	padding: $value;	
+	padding: $value;
 }
 
 body {
@@ -19,6 +19,7 @@ a{
 	text-align:center;
 }
 @import "Components/header";
-@import "Components/section"; 
+@import "Components/section";
 @import "Components/footer";
-@import "Components/form"; 
+@import "Components/form";
+@import "Components/isLoading"; 

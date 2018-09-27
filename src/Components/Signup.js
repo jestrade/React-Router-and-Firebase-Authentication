@@ -12,7 +12,7 @@ class Signup extends Component {
 			password:'',
 			message:''
 		}
-		
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -21,7 +21,7 @@ class Signup extends Component {
 		this.setState({
 			message:''
 		})
-		
+
 		if(this.state.password===this.state.passwordConfirmation){
 			let user = {
 				email: this.state.email,
@@ -46,21 +46,21 @@ class Signup extends Component {
 				message:'Password must match'
 			})
 		}
-		
-		
+
+
 	}
 	handleChange(evt){
 		this.setState({
-			[evt.target.name]:evt.target.value		
-		})	
+			[evt.target.name]:evt.target.value
+		})
 	}
-	  	
-	
-	
+
+
+
   render() {
-    return (      
+    return (
 		<section className="container">
-			
+
 			<h2>Sign Up</h2>
 			<form onSubmit={this.handleSubmit}>
 			{
@@ -71,11 +71,11 @@ class Signup extends Component {
 			}
 			  <div className="form-group">
 				<label htmlFor="name">Name</label>
-				<input 
-					type="text" 
-					className="form-control" 
-					id="name" 
-					name="name" 
+				<input
+					type="text"
+					className="form-control"
+					id="name"
+					name="name"
 					placeholder="Enter name"
 					required
 					onChange={this.handleChange}
@@ -83,11 +83,11 @@ class Signup extends Component {
 			  </div>
 			  <div className="form-group">
 				<label htmlFor="lastname">Lastname</label>
-				<input 
-					type="text" 
-					className="form-control" 
-					id="lastname" 
-					name="lastname" 
+				<input
+					type="text"
+					className="form-control"
+					id="lastname"
+					name="lastname"
 					required
 					placeholder="Enter lastname"
 					onChange={this.handleChange}
@@ -95,39 +95,38 @@ class Signup extends Component {
 			  </div>
 			  <div className="form-group">
 				<label htmlFor="email">Email address</label>
-				<input 
-					type="email" 
-					className="form-control" 
-					id="email" 
+				<input
+					type="email"
+					className="form-control"
+					id="email"
 					name="email"
-					aria-describedby="emailHelp" 
+					aria-describedby="emailHelp"
 					placeholder="Enter email"
 					required
-					onChange={this.handleChange} 
+					onChange={this.handleChange}
 				/>
-				<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
 			  </div>
 			  <div className="form-group">
 				<label htmlFor="password">Password</label>
-				<input 
-					type="password" 
-					className="form-control" 
-					id="password" 
+				<input
+					type="password"
+					className="form-control"
+					id="password"
 					name="password"
-					placeholder="Password" 
+					placeholder="Password"
 					required
 					onChange={this.handleChange}
 				/>
 			  </div>
 			  <div className="form-group">
 				<label htmlFor="passwordConfirmation">Confirm password</label>
-				<input 
-					type="password" 
-					className="form-control" 
-					id="passwordConfirmation" 
+				<input
+					type="password"
+					className="form-control"
+					id="passwordConfirmation"
 					name="passwordConfirmation"
 					placeholder="Confirm password"
-					required 
+					required
 					onChange={this.handleChange}
 				/>
 			  </div>
