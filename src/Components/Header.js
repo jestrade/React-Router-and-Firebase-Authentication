@@ -7,27 +7,27 @@ class Header extends Component {
 		super();
 		this.logout = this.logout.bind(this)
 	}
-	  	
+
 	logout(){
 		signout()
 		.then(()=>{
-			//this.props.authenticate(false)		
-		})		
+			this.props.authenticate(false)
+		})
 	}
-	
+
   render() {
-	  
-	  
+
+
     return (
 		<header>
 		<nav className="navbar navbar-dark navbar-fixed bg-dark">
 		 <Link className="navbar-brand" to="/">MyApp</Link>
 		 {
 			 this.props.isAuth &&
-			 <Link to="/" onClick={this.logout}>Logout</Link>
-			 
+			 <Link to="/" onClick={()=>this.logout()}>Logout</Link>
+
 		 }
-		 
+
 		</nav>
 		</header>
     );

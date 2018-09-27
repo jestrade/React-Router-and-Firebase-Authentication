@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 
-
 import Header from './Header';
 import Signin from './Signin';
 import Signup from './Signup';
@@ -15,25 +14,25 @@ class App extends Component {
 			isAuth: false
 		}
 		this.authenticate = this.authenticate.bind(this)
-		
+
 	}
-	
+
 	authenticate(value){
 		this.setState({
 			isAuth: value
-		})		
+		})
 	}
-	
-	
+
+
 	render() {
 	return (
 	  <main>
-		
-		
-		
+
+
+
 		<BrowserRouter>
 		<div>
-			<Header isAuth={this.state.isAuth} authenticate={this.state.authenticate}  />
+			<Header isAuth={this.state.isAuth} authenticate={this.authenticate}  />
 			{
 				!this.state.isAuth ?
 					<div>
@@ -44,10 +43,10 @@ class App extends Component {
 					<Route exact path="/" component={Dashboard} />
 			}
 			<Footer />
-		</div>	
+		</div>
 		</BrowserRouter>
-		
-	  
+
+
 	  </main>
 	);
 	}

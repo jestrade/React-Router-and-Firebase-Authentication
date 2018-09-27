@@ -6,16 +6,16 @@ class Signin extends Component {
 	constructor(){
 		super();
 		this.state = {
-			email:'',
-			password:'',
+			email:'default@default.com',
+			password:'default@default.com',
 			message:''
 		}
-		
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
 	handleSubmit(evt){
-		evt.preventDefault()		
+		evt.preventDefault()
 		this.setState({
 			message:''
 		})
@@ -27,7 +27,7 @@ class Signin extends Component {
 		console.log(user)
 		signin(user)
 		.then(()=>{
-			this.props.authenticate(true)		
+			this.props.authenticate(true)
 		})
 		.catch(error=>{
 			console.log(error)
@@ -35,19 +35,19 @@ class Signin extends Component {
 				message:'Verify your credentials'
 			})
 		})
-		
+
 	}
 	handleChange(evt){
 		this.setState({
-			[evt.target.name]:evt.target.value		
-		})	
+			[evt.target.name]:evt.target.value
+		})
 	}
-	
-	
+
+
   render() {
-    return (      
+    return (
 		<section className="container">
-		
+
 			<h2>Sign In</h2>
 			<form onSubmit={this.handleSubmit}>
 			{
@@ -58,38 +58,37 @@ class Signin extends Component {
 			}
 			  <div className="form-group">
 				<label htmlFor="email">Email address</label>
-				<input 
-					type="email" 
-					className="form-control" 
-					id="email" 
-					name="email" 
-					aria-describedby="emailHelp" 
+				<input
+					type="email"
+					className="form-control"
+					id="email"
+					name="email"
+					aria-describedby="emailHelp"
 					required
-					placeholder="Enter email" 
+					placeholder="Enter email"
 					onChange={this.handleChange}
 				/>
-				<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
 			  </div>
 			  <div className="form-group">
 				<label htmlFor="password">Password</label>
-				<input 
-					type="password" 
-					className="form-control" 
-					id="password" 
-					name="password" 
+				<input
+					type="password"
+					className="form-control"
+					id="password"
+					name="password"
 					required
-					placeholder="Password" 
+					placeholder="Password"
 					onChange={this.handleChange}
 				/>
 			  </div>
 			  <button type="submit" className="btn btn-primary">Login</button>
 			  <div className="center">
 				  <Link to="/signup">SignUp</Link>
-				   | 
+				   |
 				  <Link to="/passwordRecovery">Forgot password</Link>
 			  </div>
 			</form>
-		
+
 		</section>
     );
   }
