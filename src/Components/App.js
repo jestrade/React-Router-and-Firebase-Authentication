@@ -20,20 +20,26 @@ class App extends Component {
 
 	}
 
-	authenticate(value){
+	authenticate(value,email){
 		this.setState({
 			isAuth: value
 		})
+		if(value)		
+			localStorage.setItem("user", email)
+		else
+		 localStorage.removeItem("user")
 	}
  componentWillMount(){
 	 isAuth
 	 .then(user=>{
+		 localStorage.setItem("user", user.email)
 		 this.setState({
  			isAuth: true,
 			isLoading: false
  		})
 	 })
 	 .catch(error=>{
+		 localStorage.removeItem("user")
 			this.setState({
 				 isLoading: false
 			})
@@ -46,7 +52,9 @@ class App extends Component {
 
 		{
 			this.state.isLoading ?
-					<div class="loader"></div>
+					<div className="loaderContainer">
+						<div className="loader"></div>
+					</div>
 			:
 					<BrowserRouter>
 					<div>

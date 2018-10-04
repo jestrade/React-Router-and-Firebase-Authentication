@@ -11,7 +11,7 @@ class Header extends Component {
 	logout(){
 		signout()
 		.then(()=>{
-			this.props.authenticate(false)
+			this.props.authenticate(false,null)
 		})
 	}
 

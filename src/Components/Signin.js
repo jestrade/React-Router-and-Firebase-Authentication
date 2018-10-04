@@ -26,7 +26,7 @@ class Signin extends Component {
 		}
 		signin(user)
 		.then(()=>{
-			this.props.authenticate(true)
+			this.props.authenticate(true,user.email)
 		})
 		.catch(error=>{
 			this.setState({

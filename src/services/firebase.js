@@ -40,3 +40,9 @@ export let isAuth = new Promise((resolve,reject)=>{
 export function create(collection,obj){
 	return database.ref(collection).push(obj)
 }
+export function list(collection){
+	return database.ref(collection)
+}
+export function remove(collection, objID){
+	return database.ref(collection).child(objID).remove()
+}
