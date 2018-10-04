@@ -20,6 +20,7 @@ class MessagesList extends Component {
 				obj.push({
 					id:message,
 					email:messages[message].email,
+					image:messages[message].image,
 					message:messages[message].message
 				})
 			}
@@ -40,6 +41,7 @@ class MessagesList extends Component {
 						<tr>
 							<td>Email</td>
 							<td>Message</td>
+							<td>Image</td>
 							<td>Options</td>
 						</tr>
 					</thead>
@@ -50,6 +52,7 @@ class MessagesList extends Component {
 									<tr key={message.id}>
 										<td>{message.email}</td>
 										<td>{message.message}</td>
+										<td>{!!message.image && <img src={message.image} alt="imagen" width="64" />}</td>
 										<td><button className="btn btn-danger" onClick={()=>{this.removeData(message.id)}}>Delete</button></td>
 									</tr>
 								)

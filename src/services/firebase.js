@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
+import 'firebase/storage'
 
 const config = {
 	apiKey: process.env.REACT_APP_apiKey,
@@ -13,6 +14,7 @@ const config = {
 firebase.initializeApp(config)
 const authentication=firebase.auth()
 const database=firebase.database()
+const storage=firebase.storage()
 
 
 export function signout(){
@@ -45,4 +47,8 @@ export function list(collection){
 }
 export function remove(collection, objID){
 	return database.ref(collection).child(objID).remove()
+}
+export function upload(folder, file){
+	let filename=new Date()
+	return storage.ref().child(folder+"/"+filename).put(file)
 }
